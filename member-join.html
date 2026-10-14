@@ -1,30 +1,110 @@
-<!DOCTYPE html><html lang="ta"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>TPI Join - Tamilnadu</title><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#fff0f0;padding:10px;font-family:sans-serif}.box{max-width:520px;margin:auto;background:#fff;border:3px solid #c40000;border-radius:14px;padding:16px}h2{background:#000;color:#ff0;text-align:center;padding:12px;border-radius:10px;border:2px solid #c40000;font-size:17px}label{display:block;margin:12px 0 4px;color:#c40000;font-weight:900;font-size:14px}input,textarea{width:100%;padding:12px;border:2px solid #c40000;border-radius:10px;font-size:14px;outline:none}input:focus,textarea:focus{border-color:#000}::placeholder{color:#888}.btn{width:100%;padding:14px;background:#c40000;color:#fff;border:3px solid #000;border-radius:12px;font-weight:900;font-size:16px;margin-top:14px;cursor:pointer}.idcard{margin-top:16px;border:3px solid #000;border-radius:12px;padding:12px;background:linear-gradient(135deg,#ff0,#fff);display:none}.idcard img{width:85px;height:85px;border:3px solid #000;border-radius:10px;object-fit:cover}</style></head><body><div class="box"><h2>🐯 தமிழர் புரட்சி இயக்கம்<br><small style="color:#fff;font-size:11px">TAMILNADU - MEMBER JOIN</small></h2>
-<form id="f">
-<label>முழு பெயர் *</label><input id="name" placeholder="Full Name" required>
-<label>பிறந்த தேதி *</label><input id="dob" type="date" required>
-<label>மொபைல் எண் *</label><input id="mobile" placeholder="Mobile" required>
-<label>புகைப்படம் *</label><input id="photo" type="file" accept="image/*" required>
-<label>வாக்காளர் எண் (Voter ID) *</label><input id="voter" placeholder="UBU0443952" required style="text-transform:uppercase">
-<label>முகவரி (Address) *</label><textarea id="addr" rows="2" placeholder="Full Address" required></textarea>
-<label>வார்டு எண் (Ward Number)</label><input id="ward" placeholder="Ward No">
-<label>கிராமம் / நகரம் *</label><input id="village" placeholder="Kiramam / Nagaram" required>
-<label>தாலுகா *</label><input id="taluk" placeholder="Taluka" required>
-<label>மாவட்டம் *</label><input id="dist" placeholder="Mavattam - Ex: Cuddalore" required>
-<label>மண்டலம் (Mandalam)</label><input id="mandalam" placeholder="Mandalam">
-<button class="btn" type="submit">✨ ID CARD உருவாக்கு + Save</button>
-</form>
-<div id="card" class="idcard"><h3 style="text-align:center">🪪 TPI ID CARD</h3><div style="display:flex;gap:10px;margin-top:10px"><img id="cphoto"><div><p id="cname" style="font-weight:900"></p><p id="cvoter" style="color:#c40000;font-weight:bold"></p><p id="cdist" style="font-size:13px"></p><p id="caddr" style="font-size:12px"></p></div></div><button class="btn" onclick="window.print()" style="background:#000;color:#ff0">🖨️ Print</button><a href="index.html" style="display:block;text-align:center;margin-top:10px;color:#c40000;font-weight:bold;text-decoration:none">← Home</a></div></div>
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TPI Member Join + RED ID CARD</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#111;color:#fff;font-family:Arial;padding:10px}
+.h{background:#c00;color:gold;padding:12px;text-align:center;font-weight:900;border:2px solid gold;border-radius:10px}
+.fm{background:#fff;color:#000;padding:12px;border-radius:12px;max-width:500px;margin:10px auto}
+.fm label{font-weight:900;font-size:13px;color:#c00;display:block;margin-top:8px}
+.fm input,.fm select{width:100%;padding:10px;margin:3px 0;border:2px solid #c00;border-radius:8px;font-weight:bold}
+.btn{width:100%;padding:12px;background:#c00;color:#fff;border:2px solid gold;border-radius:30px;font-weight:900;margin-top:10px;font-size:16px}
+.cards{display:none;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:15px}
+.c{width:360px;height:540px;background:#8B0000;border:3px solid gold;border-radius:10px;position:relative;overflow:hidden}
+.g{border:2px solid gold;margin:6px;height:calc(100% - 12px);border-radius:6px;padding:8px;color:gold;position:relative}
+.ft{font-size:20px;font-weight:900;text-align:center;line-height:1.1;text-shadow:1px 1px #000}
+.tiger{width:100%;height:240px;object-fit:contain;margin-top:5px}
+.th{position:absolute;right:10px;bottom:50px;width:85px;height:85px;border:3px solid gold;border-radius:50%;overflow:hidden;background:#fff}
+.th img{width:100%;height:100%;object-fit:cover}
+.bg{background:gold;color:#8B0000;font-weight:900;text-align:center;padding:4px;font-size:11px;position:absolute;bottom:0;left:0;right:0}
+.mp{width:105px;height:125px;border:2px solid gold;float:left;margin-right:8px;background:#777;overflow:hidden}
+.mp img{width:100%;height:100%;object-fit:cover}
+.d{font-size:12px;line-height:1.25;color:gold}
+.d b{color:#fff}
+.sg{position:absolute;right:10px;bottom:25px;font-family:cursive;color:#fff;font-size:18px}
+@media print{.h,.fm{display:none}.cards{display:flex!important}}
+</style>
+</head>
+<body>
+
+<div class="h">🐯 TAMILAR PURATCHI IYAKKAM<br>உறுப்பினர் சேர்க்கை + RED ID CARD</div>
+
+<div class="fm" id="formBox">
+<label>முழு பெயர் *</label><input id="name" placeholder="M. SELVAM">
+<label>பிறந்த தேதி *</label><input type="date" id="dob">
+<label>மொபைல் எண் *</label><input id="mob" placeholder="98765 43210">
+<label>புகைப்படம் *</label><input type="file" id="photo" accept="image/*">
+<label>வாக்காளர் எண் (Voter ID) *</label><input id="voter" placeholder="XYZ1234567">
+<label>முகவரி (Address) *</label><input id="addr" placeholder="Address">
+<label>வார்டு எண் (Ward Number)</label><input id="ward" placeholder="Ward">
+<label>கிராமம் / நகரம் *</label><input id="kiramam" placeholder="கிராமம்">
+<label>தாலுகா *</label><input id="taluka" placeholder="தாலுகா">
+<label>மாவட்டம் *</label><input id="mavattam" placeholder="மாவட்டம்">
+<label>பதவி *</label>
+<select id="pathavi"><option>உறுப்பினர் / Member</option><option selected>ஒருங்கிணைப்பாளர் / Coordinator</option><option>மாவட்ட செயலாளர்</option><option>ஒன்றிய செயலாளர்</option></select>
+<button class="btn" onclick="generate()">✅ சமர்ப்பித்து ID CARD பெறுக</button>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<div style="text-align:center;display:none" id="printBox">
+<button class="btn" style="max-width:300px;background:#000" onclick="window.print()">🖨️ PRINT / DOWNLOAD ID CARD</button>
+<button class="btn" style="max-width:300px;background:#222" onclick="location.reload()">🔄 மீண்டும் புதிய உறுப்பினர்</button>
+</div>
+
 <script>
-const f=document.getElementById('f');
-f.onsubmit=e=>{
- e.preventDefault();
- let r=new FileReader();
- r.onload=()=>{
-  let m={id:Date.now(),name:name.value,dob:dob.value,mobile:mobile.value,photo:r.result,voter:voter.value.toUpperCase(),addr:addr.value,ward:ward.value,village:village.value,taluk:taluk.value,dist:dist.value,mandalam:mandalam.value,date:new Date().toLocaleDateString('ta-IN')};
-  let all=JSON.parse(localStorage.getItem('tpi_members')||'[]');all.push(m);localStorage.setItem('tpi_members',JSON.stringify(all));
-  cphoto.src=m.photo;cname.innerText=m.name;cvoter.innerText='Voter: '+m.voter;cdist.innerText=m.dist+' | '+m.taluk+' | '+m.mandalam;caddr.innerText=m.village+' - Ward '+m.ward+' - '+m.addr;
-  card.style.display='block';f.style.display='none';scrollTo(0,9999);
- };
- r.readAsDataURL(photo.files[0]);
+let memUrl='';
+document.getElementById('photo').addEventListener('change',e=>{
+ let f=e.target.files[0];
+ if(f) memUrl=URL.createObjectURL(f);
+});
+
+function generate(){
+ let n=document.getElementById('name').value||'M. SELVAM';
+ let voter=document.getElementById('voter').value||'TPI-'+Math.floor(Math.random()*100000);
+ let kir=document.getElementById('kiramam').value||'THENI';
+ let mav=document.getElementById('mavattam').value||'THENI';
+ let ward=document.getElementById('ward').value||'01';
+ let pat=document.getElementById('pathavi').value;
+ let tal=document.getElementById('taluka').value||'THENI';
+
+ document.getElementById('formBox').style.display='none';
+ document.getElementById('cards').style.display='flex';
+ document.getElementById('printBox').style.display='block';
+
+ document.getElementById('cards').innerHTML=`
+<div class="c"><div class="g">
+<div class="ft">TAMILAR<br>PURATCHI<br>IYAKKAM<br><span style="font-size:12px">தமிழர் புரட்சி இயக்கம்</span></div>
+<img class="tiger" src="https://i.postimg.cc/3x3QzN0Q/tiger.png" onerror="this.src='flag.jpg'" style="filter:drop-shadow(0 0 8px gold)">
+<div class="th"><img src="thalaivar.jpg" onerror="this.src='flag.jpg'"></div>
+<div style="position:absolute;left:8px;bottom:35px;font-size:9px;color:#fff">MEMBER ID: ${voter}</div>
+<div class="bg">புரட்சி தலைவர் - மக்கள் போராட்டம் • நீதி • சக்தியரம் - VALID 2024-2029</div>
+</div></div>
+
+<div class="c"><div class="g">
+<div style="text-align:center;font-weight:900;font-size:16px">MEMBERSHIP ID CARD<br><span style="font-size:10px">உறுப்பினர் அடையாள அட்டை</span></div>
+<div style="margin-top:8px;overflow:hidden">
+<div class="mp">${memUrl?`<img src="${memUrl}">`:`<div style="color:#fff;text-align:center;padding-top:40px;font-size:10px">MEMBER<br>PHOTO</div>`}</div>
+<div class="d">
+Name / பெயர்<br><b>${n}</b><br><br>
+ID Card No. / அடையாள எண்<br><b>: ${voter}</b><br>
+Pathavi / பதவி<br><b>: ${pat}</b><br>
+Oor / ஊர்<br><b>: ${kir}</b><br>
+Mavattam / மாவட்டம்<br><b>: ${mav}</b><br>
+Ward / வார்டு<br><b>: ${ward}</b><br>
+Taluka / தாலுகா<br><b>: ${tal}</b><br><br>
+Valid Until / செல்லுபடியாகும் வரை<br><b>: 14-01-2029</b>
+</div>
+</div>
+<div class="sg">Puratchi Thalaivar<br><span style="font-size:8px">தலைவர் கையொப்பம்</span></div>
+<div class="bg" style="font-size:7px">TAMILAR PURATCHI IYAKKAM • NON-TRANSFERABLE • tpi.org.in/verify</div>
+</div></div>
+`;
+ window.scrollTo(0,0);
 }
-</script></body></html>
+</script>
+</body>
+                                  </html>
