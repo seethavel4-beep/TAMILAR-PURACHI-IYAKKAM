@@ -3,29 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TPI Member Join + RED ID CARD</title>
+<title>TPI RED ID CARD - FIXED</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#111;color:#fff;font-family:Arial;padding:10px}
-.h{background:#c00;color:gold;padding:12px;text-align:center;font-weight:900;border:2px solid gold;border-radius:10px}
+.h{background:#c00;color:gold;padding:12px;text-align:center;font-weight:900;border:2px solid gold;border-radius:10px;font-size:18px}
 .fm{background:#fff;color:#000;padding:12px;border-radius:12px;max-width:500px;margin:10px auto}
 .fm label{font-weight:900;font-size:13px;color:#c00;display:block;margin-top:8px}
 .fm input,.fm select{width:100%;padding:10px;margin:3px 0;border:2px solid #c00;border-radius:8px;font-weight:bold}
 .btn{width:100%;padding:12px;background:#c00;color:#fff;border:2px solid gold;border-radius:30px;font-weight:900;margin-top:10px;font-size:16px}
 .cards{display:none;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:15px}
-.c{width:360px;height:540px;background:#8B0000;border:3px solid gold;border-radius:10px;position:relative;overflow:hidden}
-.g{border:2px solid gold;margin:6px;height:calc(100% - 12px);border-radius:6px;padding:8px;color:gold;position:relative}
-.ft{font-size:20px;font-weight:900;text-align:center;line-height:1.1;text-shadow:1px 1px #000}
-.tiger{width:100%;height:240px;object-fit:contain;margin-top:5px}
-.th{position:absolute;right:10px;bottom:50px;width:85px;height:85px;border:3px solid gold;border-radius:50%;overflow:hidden;background:#fff}
+.c{width:360px;height:560px;background:#8B0000;border:3px solid gold;border-radius:12px;position:relative;overflow:hidden;box-shadow:0 0 20px gold}
+.g{border:2px solid gold;margin:6px;height:calc(100% - 12px);border-radius:8px;padding:8px;color:gold;position:relative}
+.ft{font-size:22px;font-weight:900;text-align:center;line-height:1.1;text-shadow:2px 2px #000}
+.tigerbox{width:100%;height:250px;display:flex;align-items:center;justify-content:center;font-size:180px;background:radial-gradient(circle,gold 0%,#8B0000 70%);border-radius:15px;margin-top:10px;filter:drop-shadow(0 0 15px gold)}
+.th{position:absolute;right:12px;bottom:55px;width:90px;height:90px;border:3px solid gold;border-radius:50%;overflow:hidden;background:#fff;box-shadow:0 0 10px gold}
 .th img{width:100%;height:100%;object-fit:cover}
-.bg{background:gold;color:#8B0000;font-weight:900;text-align:center;padding:4px;font-size:11px;position:absolute;bottom:0;left:0;right:0}
-.mp{width:105px;height:125px;border:2px solid gold;float:left;margin-right:8px;background:#777;overflow:hidden}
+.bg{background:gold;color:#8B0000;font-weight:900;text-align:center;padding:5px;font-size:10px;position:absolute;bottom:0;left:0;right:0}
+.mp{width:110px;height:130px;border:2px solid gold;float:left;margin-right:8px;background:#333;overflow:hidden;border-radius:6px}
 .mp img{width:100%;height:100%;object-fit:cover}
-.d{font-size:12px;line-height:1.25;color:gold}
-.d b{color:#fff}
-.sg{position:absolute;right:10px;bottom:25px;font-family:cursive;color:#fff;font-size:18px}
-@media print{.h,.fm{display:none}.cards{display:flex!important}}
+.d{font-size:12px;line-height:1.3;color:gold}
+.d b{color:#fff;font-size:13px}
+.sg{position:absolute;right:10px;bottom:25px;font-family:cursive;color:#fff;font-size:16px;text-align:right}
+@media print{.h,.fm,#printBox{display:none}.cards{display:flex!important}}
 </style>
 </head>
 <body>
@@ -39,7 +39,7 @@ body{background:#111;color:#fff;font-family:Arial;padding:10px}
 <label>புகைப்படம் *</label><input type="file" id="photo" accept="image/*">
 <label>வாக்காளர் எண் (Voter ID) *</label><input id="voter" placeholder="XYZ1234567">
 <label>முகவரி (Address) *</label><input id="addr" placeholder="Address">
-<label>வார்டு எண் (Ward Number)</label><input id="ward" placeholder="Ward">
+<label>வார்டு எண்</label><input id="ward" placeholder="Ward">
 <label>கிராமம் / நகரம் *</label><input id="kiramam" placeholder="கிராமம்">
 <label>தாலுகா *</label><input id="taluka" placeholder="தாலுகா">
 <label>மாவட்டம் *</label><input id="mavattam" placeholder="மாவட்டம்">
@@ -50,9 +50,9 @@ body{background:#111;color:#fff;font-family:Arial;padding:10px}
 
 <div class="cards" id="cards"></div>
 
-<div style="text-align:center;display:none" id="printBox">
-<button class="btn" style="max-width:300px;background:#000" onclick="window.print()">🖨️ PRINT / DOWNLOAD ID CARD</button>
-<button class="btn" style="max-width:300px;background:#222" onclick="location.reload()">🔄 மீண்டும் புதிய உறுப்பினர்</button>
+<div style="text-align:center;display:none;margin-top:10px" id="printBox">
+<button class="btn" style="max-width:320px;background:#000" onclick="window.print()">🖨️ PRINT / DOWNLOAD ID CARD</button><br>
+<button class="btn" style="max-width:320px;background:#222" onclick="location.reload()">🔄 மீண்டும் புதிய உறுப்பினர்</button>
 </div>
 
 <script>
@@ -77,34 +77,4 @@ function generate(){
 
  document.getElementById('cards').innerHTML=`
 <div class="c"><div class="g">
-<div class="ft">TAMILAR<br>PURATCHI<br>IYAKKAM<br><span style="font-size:12px">தமிழர் புரட்சி இயக்கம்</span></div>
-<img class="tiger" src="https://i.postimg.cc/3x3QzN0Q/tiger.png" onerror="this.src='flag.jpg'" style="filter:drop-shadow(0 0 8px gold)">
-<div class="th"><img src="thalaivar.jpg" onerror="this.src='flag.jpg'"></div>
-<div style="position:absolute;left:8px;bottom:35px;font-size:9px;color:#fff">MEMBER ID: ${voter}</div>
-<div class="bg">புரட்சி தலைவர் - மக்கள் போராட்டம் • நீதி • சக்தியரம் - VALID 2024-2029</div>
-</div></div>
-
-<div class="c"><div class="g">
-<div style="text-align:center;font-weight:900;font-size:16px">MEMBERSHIP ID CARD<br><span style="font-size:10px">உறுப்பினர் அடையாள அட்டை</span></div>
-<div style="margin-top:8px;overflow:hidden">
-<div class="mp">${memUrl?`<img src="${memUrl}">`:`<div style="color:#fff;text-align:center;padding-top:40px;font-size:10px">MEMBER<br>PHOTO</div>`}</div>
-<div class="d">
-Name / பெயர்<br><b>${n}</b><br><br>
-ID Card No. / அடையாள எண்<br><b>: ${voter}</b><br>
-Pathavi / பதவி<br><b>: ${pat}</b><br>
-Oor / ஊர்<br><b>: ${kir}</b><br>
-Mavattam / மாவட்டம்<br><b>: ${mav}</b><br>
-Ward / வார்டு<br><b>: ${ward}</b><br>
-Taluka / தாலுகா<br><b>: ${tal}</b><br><br>
-Valid Until / செல்லுபடியாகும் வரை<br><b>: 14-01-2029</b>
-</div>
-</div>
-<div class="sg">Puratchi Thalaivar<br><span style="font-size:8px">தலைவர் கையொப்பம்</span></div>
-<div class="bg" style="font-size:7px">TAMILAR PURATCHI IYAKKAM • NON-TRANSFERABLE • tpi.org.in/verify</div>
-</div></div>
-`;
- window.scrollTo(0,0);
-}
-</script>
-</body>
-                                  </html>
+<div class="ft">TAMILAR<br>PURATCHI<br>IYAKK
