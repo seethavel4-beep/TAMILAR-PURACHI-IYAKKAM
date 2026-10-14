@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Login - Tamilar Puratchi Iyakkam</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#080508;color:#fff;font-family:Arial,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:15px}
+.card{background:#111;border:2px solid #ff0000;border-radius:18px;padding:25px;width:100%;max-width:400px;text-align:center;box-shadow:0 10px 40px rgba(255,0,0,0.3)}
+.flag{width:90px;height:90px;border-radius:15px;border:3px solid #ffcc00;margin:0 auto 12px;display:block;object-fit:cover}
+h1{font-size:22px;font-weight:900} h1 span{color:#ff0000} p{color:#888;font-size:13px;margin:8px 0 18px}
+input{width:100%;padding:14px;background:#000;border:2px solid #333;border-radius:10px;color:#fff;font-size:16px;margin:10px 0;outline:none}
+input:focus{border-color:#ff0000}
+.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff0000,#b30000);color:#fff;border:none;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer;margin-top:10px}
+.error{background:#300;color:#ff7777;padding:10px;border-radius:8px;font-size:13px;margin-top:12px;display:none}
+.demo{background:#1a1a1a;padding:12px;border-radius:10px;margin-top:18px;text-align:left;border:1px dashed #333}
+.demo b{color:#ffcc00;font-size:12px}.demo div{font-size:13px;margin:4px 0}
+a{color:#ffcc00;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="card">
+<img src="flag.jpg" class="flag">
+<h1>TAMILAR <span>PURATCHI</span></h1>
+<p>Member Login - உறுப்பினர் உள்நுழைவு</p>
+<input type="text" id="memberId" placeholder="Member ID / Phone">
+<input type="password" id="password" placeholder="Password: 1234">
+<button class="btn" onclick="login()">🚩 LOGIN</button>
+<div class="error" id="error"></div>
+<div class="demo">
+<b>DEMO LOGIN:</b>
+<div>ID: <b style="color:#fff">TPI0001</b> or <b style="color:#fff">8489247911</b></div>
+<div>Password: <b style="color:#fff">1234</b></div>
+<div style="margin-top:8px;color:#25D366">Thalaivar: A. VELMURUGAN B.TECH</div>
+</div>
+<div style="margin-top:15px"><a href="index.html">← Home</a> | 8489247911</div>
+</div>
+<script>
+const members={"TPI0001":{name:"A. VELMURUGAN B.TECH",role:"THALAIVAR / PRESIDENT",phone:"8489247911",district:"Annur, Coimbatore",photo:"flag.jpg"},"8489247911":{name:"A. VELMURUGAN B.TECH",role:"THALAIVAR / PRESIDENT",phone:"8489247911",district:"Annur, Coimbatore",photo:"flag.jpg"},"TPI0002":{name:"Test Member",role:"Member",phone:"9876543210",district:"Coimbatore",photo:"flag.jpg"}};
+function login(){const id=document.getElementById('memberId').value.trim().toUpperCase();const pass=document.getElementById('password').value.trim();const err=document.getElementById('error');if(!id||!pass){err.style.display='block';err.innerText='ID & Password Enter Pannunga!';return;}if(pass!=='1234'&&pass!=='tpi123'){err.style.display='block';err.innerText='Password: 1234';return;}if(members[id]){localStorage.setItem('tpi_member',JSON.stringify(members[id]));localStorage.setItem('tpi_id',id);window.location.href='member-card.html';}else{err.style.display='block';err.innerText='Member ID Illa! Demo: TPI0001 use pannunga';}}
+</script>
+</body>
+</html>
