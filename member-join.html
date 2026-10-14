@@ -1,67 +1,30 @@
-<!DOCTYPE html>
-<html lang="ta">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Member Join - TPI</title>
-<style>*{box-sizing:border-box}body{font-family:Arial;background:#000;color:#fff;margin:0;padding:10px}input,select,textarea{width:100%;padding:11px;margin-top:4px;border-radius:8px;border:2px solid #ff0}label{font-size:13px;color:#ff0;margin-top:8px;display:block}.box{max-width:480px;margin:auto;background:#fff;color:#000;padding:16px;border-radius:14px;border:4px solid #ff0}.btn{width:100%;padding:14px;background:#c40000;color:#fff;border:2px solid #000;border-radius:10px;font-weight:bold;margin-top:10px}.card{width:324px;height:204px;background:#fff;border:2px solid #000;border-radius:8px;overflow:hidden;position:relative;margin:14px auto;color:#000}.ch{height:38px;background:linear-gradient(90deg,#c40000 0%,#c40000 35%,#000 35%,#000 65%,#ffcc00 65%);display:flex;align-items:center;justify-content:space-between;padding:0 8px;color:#fff;font-size:10px;font-weight:bold}.cb{display:flex;padding:6px;gap:6px}.cp{width:62px;height:72px;border:1.5px solid #000;overflow:hidden}.cp img{width:100%;height:100%;object-fit:cover}.cd{flex:1;font-size:8px;line-height:1.35}.cf{position:absolute;bottom:0;width:100%;background:#000;color:#ff0;text-align:center;font-size:7px;padding:3px}</style>
-</head>
-<body>
-<div class="box">
-<h2 style="text-align:center;background:#000;color:#ff0;padding:8px;border-radius:8px">🪪 உறுப்பினர் சேர்</h2>
-<label>Member Photo *</label><input type="file" id="memberPhotoInput" accept="image/*">
-<label>பெயர் / Name *</label><input id="name" placeholder="SEETHAVEL">
-<label>தந்தை பெயர் *</label><input id="father" placeholder="Father Name">
-<label>தொலைபேசி / Phone *</label><input id="phone" type="tel" placeholder="9876543210">
-<label>பிறந்த தேதி *</label><input id="dob" type="date">
-<label>வாக்காளர் எண்</label><input id="voter" placeholder="Voter ID">
-<label>மாவட்டம் *</label><select id="dist"><option value="">தேர்வு</option><option>கடலூர்</option><option>விழுப்புரம்</option><option>சென்னை</option><option>மதுரை</option><option>கோவை</option></select>
-<label>தாலுகா *</label><input id="taluk" placeholder="விருத்தாசலம்">
-<label>கிராமம் / நகரம் *</label><input id="village" placeholder="Village">
-<label>வார்டு</label><input id="ward" placeholder="Ward No">
-<label>முகவரி *</label><textarea id="address" rows="2" placeholder="Full address"></textarea>
-<button class="btn" onclick="makeCard()">✨ ID CARD உருவாக்கு + Save</button>
-
-<div id="cardArea" style="display:none">
-<div class="card" id="idCard">
-<div class="ch"><span>🐯 TPI</span><span>தமிழர் புரட்சி இயக்கம்</span><span id="cId">TPI-0001</span></div>
-<div class="cb">
-<div class="cp"><img id="cMemberPhoto"></div>
-<div class="cd">
-<div><b>பெயர்:</b> <span id="cName"></span></div>
-<div><b>தந்தை:</b> <span id="cFather"></span></div>
-<div><b>Phone:</b> <span id="cPhone"></span></div>
-<div><b>DOB:</b> <span id="cDob"></span></div>
-<div><b>District:</b> <span id="cDist"></span></div>
-<div><b>Village:</b> <span id="cVillage"></span></div>
-<div><b>Address:</b> <span id="cAddress" style="font-size:7px"></span></div>
-</div>
-<div class="cp"><img src="flag.jpg" onerror="this.src='https://via.placeholder.com/62x72?text=TPI'"><div style="text-align:center;font-size:6px"><b>தலைவர்</b><br>சீதாவேல்</div></div>
-</div>
-<div class="cf">தமிழ்! தமிழர்! தமிழ்நாடு! | seethavel4-beep.github.io</div>
-</div>
-<button class="btn" style="background:green" onclick="downloadCard()">📥 Download ID Card</button>
-<a href="admin.html" style="display:block;text-align:center;margin-top:10px;color:#000;font-weight:bold">👉 Admin Panel Poga</a>
-</div>
-</div>
-
+<!DOCTYPE html><html lang="ta"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>TPI Join - Tamilnadu</title><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#fff0f0;padding:10px;font-family:sans-serif}.box{max-width:520px;margin:auto;background:#fff;border:3px solid #c40000;border-radius:14px;padding:16px}h2{background:#000;color:#ff0;text-align:center;padding:12px;border-radius:10px;border:2px solid #c40000;font-size:17px}label{display:block;margin:12px 0 4px;color:#c40000;font-weight:900;font-size:14px}input,textarea{width:100%;padding:12px;border:2px solid #c40000;border-radius:10px;font-size:14px;outline:none}input:focus,textarea:focus{border-color:#000}::placeholder{color:#888}.btn{width:100%;padding:14px;background:#c40000;color:#fff;border:3px solid #000;border-radius:12px;font-weight:900;font-size:16px;margin-top:14px;cursor:pointer}.idcard{margin-top:16px;border:3px solid #000;border-radius:12px;padding:12px;background:linear-gradient(135deg,#ff0,#fff);display:none}.idcard img{width:85px;height:85px;border:3px solid #000;border-radius:10px;object-fit:cover}</style></head><body><div class="box"><h2>🐯 தமிழர் புரட்சி இயக்கம்<br><small style="color:#fff;font-size:11px">TAMILNADU - MEMBER JOIN</small></h2>
+<form id="f">
+<label>முழு பெயர் *</label><input id="name" placeholder="Full Name" required>
+<label>பிறந்த தேதி *</label><input id="dob" type="date" required>
+<label>மொபைல் எண் *</label><input id="mobile" placeholder="Mobile" required>
+<label>புகைப்படம் *</label><input id="photo" type="file" accept="image/*" required>
+<label>வாக்காளர் எண் (Voter ID) *</label><input id="voter" placeholder="UBU0443952" required style="text-transform:uppercase">
+<label>முகவரி (Address) *</label><textarea id="addr" rows="2" placeholder="Full Address" required></textarea>
+<label>வார்டு எண் (Ward Number)</label><input id="ward" placeholder="Ward No">
+<label>கிராமம் / நகரம் *</label><input id="village" placeholder="Kiramam / Nagaram" required>
+<label>தாலுகா *</label><input id="taluk" placeholder="Taluka" required>
+<label>மாவட்டம் *</label><input id="dist" placeholder="Mavattam - Ex: Cuddalore" required>
+<label>மண்டலம் (Mandalam)</label><input id="mandalam" placeholder="Mandalam">
+<button class="btn" type="submit">✨ ID CARD உருவாக்கு + Save</button>
+</form>
+<div id="card" class="idcard"><h3 style="text-align:center">🪪 TPI ID CARD</h3><div style="display:flex;gap:10px;margin-top:10px"><img id="cphoto"><div><p id="cname" style="font-weight:900"></p><p id="cvoter" style="color:#c40000;font-weight:bold"></p><p id="cdist" style="font-size:13px"></p><p id="caddr" style="font-size:12px"></p></div></div><button class="btn" onclick="window.print()" style="background:#000;color:#ff0">🖨️ Print</button><a href="index.html" style="display:block;text-align:center;margin-top:10px;color:#c40000;font-weight:bold;text-decoration:none">← Home</a></div></div>
 <script>
-let memberPhotoData='';
-document.getElementById('memberPhotoInput').addEventListener('change',function(e){
-let r=new FileReader();r.onload=function(ev){memberPhotoData=ev.target.result;};r.readAsDataURL(e.target.files[0]);
-});
-function makeCard(){
-if(!name.value||!phone.value||!dist.value){alert('Name/Phone/District fill pannunga!');return;}
-if(!memberPhotoData){alert('Member photo select pannunga!');return;}
-let id='TPI-'+String(Date.now()).slice(-4);
-cId.innerText=id;cName.innerText=name.value;cFather.innerText=father.value;cPhone.innerText=phone.value;cDob.innerText=dob.value;cDist.innerText=dist.value;cVillage.innerText=village.value;cAddress.innerText=address.value;
-cMemberPhoto.src=memberPhotoData;
-// ADMIN SAVE - ITHU THAAN 5TH POINT
-let members=JSON.parse(localStorage.getItem('tpi_members')||'[]');
-members.push({id:id,name:name.value,phone:phone.value,father:father.value,dob:dob.value,voter:voter.value,dist:dist.value,taluk:taluk.value,village:village.value,ward:ward.value,address:address.value,photo:memberPhotoData,date:new Date().toLocaleString()});
-localStorage.setItem('tpi_members',JSON.stringify(members));
-cardArea.style.display='block';window.scrollTo(0,9999);
-alert('Saved! Admin panel-la paarkalam!');
+const f=document.getElementById('f');
+f.onsubmit=e=>{
+ e.preventDefault();
+ let r=new FileReader();
+ r.onload=()=>{
+  let m={id:Date.now(),name:name.value,dob:dob.value,mobile:mobile.value,photo:r.result,voter:voter.value.toUpperCase(),addr:addr.value,ward:ward.value,village:village.value,taluk:taluk.value,dist:dist.value,mandalam:mandalam.value,date:new Date().toLocaleDateString('ta-IN')};
+  let all=JSON.parse(localStorage.getItem('tpi_members')||'[]');all.push(m);localStorage.setItem('tpi_members',JSON.stringify(all));
+  cphoto.src=m.photo;cname.innerText=m.name;cvoter.innerText='Voter: '+m.voter;cdist.innerText=m.dist+' | '+m.taluk+' | '+m.mandalam;caddr.innerText=m.village+' - Ward '+m.ward+' - '+m.addr;
+  card.style.display='block';f.style.display='none';scrollTo(0,9999);
+ };
+ r.readAsDataURL(photo.files[0]);
 }
-function downloadCard(){alert('Screenshot eduthu save pannikonga Anna! Phone-la long press panni save pannalam');}
-</script>
-</body>
-                         </html>
+</script></body></html>
