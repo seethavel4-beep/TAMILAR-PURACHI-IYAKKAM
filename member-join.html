@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ta"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>உறுப்பினர் - TPI</title><style>
+*{box-sizing:border-box}body{font-family:Arial;margin:0;background:#f4f4f4}
+.head{background:linear-gradient(90deg,#c40000,#ffcc00);padding:12px;text-align:center;border-bottom:4px solid #000}
+.box{max-width:700px;margin:10px auto;background:#fff;padding:18px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.2);border:2px solid #000}
+label{font-weight:bold;display:block;margin-top:10px;font-size:14px}input,textarea{width:100%;padding:11px;margin-top:4px;border:2px solid #222;border-radius:8px;font-size:14px}
+.row{display:flex;gap:8px}.row>div{flex:1}.btn{background:#000;color:#ff0;padding:14px;width:100%;border:none;border-radius:10px;font-size:16px;font-weight:bold;margin-top:12px;cursor:pointer}
+.id-card{width:100%;max-width:420px;margin:20px auto;background:#fff;border:3px solid #000;border-radius:12px;overflow:hidden;display:none;position:relative}
+.id-top{background:linear-gradient(90deg,red,yellow);padding:8px;text-align:center;border-bottom:3px solid #000}
+.id-no{background:#000;color:#ff0;padding:5px;text-align:center;font-weight:bold}
+.id-body{padding:10px 95px 10px 10px;font-size:12.5px;line-height:1.7}
+.leader-box{position:absolute;right:6px;bottom:26px;text-align:center}
+.leader-box img{width:78px;height:92px;border:2px solid #000;border-radius:6px;object-fit:cover;background:#fff}
+.id-footer{background:#000;color:#fff;text-align:center;padding:5px;font-size:10px}
+</style></head><body>
+<div class="head"><img src="flag.jpg" width="80" style="border:2px solid #000"><h3 style="margin:4px">தமிழர் புரட்சி இயக்கம்</h3><small>உறுப்பினர் படிவம்</small></div>
+<div class="box">
+<form id="f">
+<label>பெயர் / Name *</label><input id="name" required>
+<label>தொலைபேசி / Phone *</label><input id="phone" required>
+<label>Email</label><input type="email" id="email">
+<label>Voter ID</label><input id="voter">
+<label>பிறந்த தேதி / DOB *</label><input type="date" id="dob" required>
+<label>தகப்பனார் பெயர் *</label><input id="father" required>
+<label>முகவரி / Address *</label><textarea id="address" required rows="2"></textarea>
+<label>வார்டு நம்பர்</label><input id="ward">
+<div class="row"><div><label>கிராமம்</label><input id="village"></div><div><label>ஊராட்சி</label><input id="panchayat"></div></div>
+<div class="row"><div><label>பேரூராட்சி</label><input id="perur"></div><div><label>நகராட்சி</label><input id="nagar"></div></div>
+<div class="row"><div><label>தாலூகா</label><input id="taluk"></div><div><label>மாவட்டம் *</label><input id="dist" required></div></div>
+<label>மண்டலம்</label><input id="mandalam">
+<label>Create Password *</label><input type="password" id="p1" required>
+<label>Confirm Password *</label><input type="password" id="p2" required>
+<button class="btn" type="submit">🪪 ID CARD உருவாக்கு</button>
+</form>
+<div id="idCard" class="id-card">
+<div class="id-top"><img src="flag.jpg" width="60" style="border:2px solid #000"><br><b>தமிழர் புரட்சி இயக்கம்</b><br><small>TAMILAR PURATCHI IYAKKAM</small></div>
+<div class="id-no" id="idNo">ID: TPI-2026-0001</div>
+<div class="id-body">
+<b>பெயர்:</b> <span id="cName"></span><br><b>தந்தை:</b> <span id="cFather"></span><br><b>DOB:</b> <span id="cDob"></span> | <b>Voter:</b> <span id="cVoter"></span><br><b>Phone:</b> <span id="cPhone"></span><br><b>மாவட்டம்:</b> <span id="cDist"></span> / <span id="cTaluk"></span><br><b>கிராமம்:</b> <span id="cVill"></span> W-<span id="cWard"></span><br><b>முகவரி:</b> <span id="cAddr"></span>
+<div class="leader-box"><img src="leader.jpg"><br><span style="font-size:9px;background:yellow;padding:1px 4px;border:1px solid #000;font-weight:bold">தலைவர்</span></div>
+</div>
+<div class="id-footer">அதிகாரப்பூர்வ உறுப்பினர் அட்டை | தலைமை</div>
+</div>
+<button id="dl" class="btn" style="display:none;background:green">⬇️ ID DOWNLOAD</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();
+if(document.getElementById('p1').value!=document.getElementById('p2').value){alert('Password match agala!');return;}
+let id="TPI-"+new Date().getFullYear()+"-"+Math.floor(1000+Math.random()*9000);
+document.getElementById('idNo').innerText="ID: "+id;
+cName.innerText=name.value;cFather.innerText=father.value;cDob.innerText=dob.value;cVoter.innerText=voter.value;
+cPhone.innerText=phone.value;cDist.innerText=dist.value;cTaluk.innerText=taluk.value;
+cVill.innerText=village.value+" "+panchayat.value;cWard.innerText=ward.value;cAddr.innerText=address.value;
+idCard.style.display="block";dl.style.display="block";window.scrollTo(0,idCard.offsetTop);
+});
+dl.addEventListener('click',()=>{html2canvas(idCard).then(c=>{let a=document.createElement('a');a.download=name.value+'_TPI.jpg';a.href=c.toDataURL();a.click();});});
+</script></body></html>
