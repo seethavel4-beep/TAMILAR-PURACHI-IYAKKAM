@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>தமிழர் புரட்சி இயக்கம்</title>
+<link href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Mukta Malar',sans-serif;background:#0a0a0a;color:#fff}
+nav{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.9);padding:14px 5%;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d90429;z-index:99}
+.logo{font-weight:800;font-size:20px}.logo span{color:#d90429}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 60px;background:linear-gradient(135deg,#000 0%,#1a0000 50%,#000 100%)}
+.badge{background:#d90429;display:inline-block;padding:6px 18px;border-radius:30px;font-size:13px;font-weight:700;margin-bottom:18px}
+.hero h1{font-size:48px;line-height:1.1;font-weight:800;margin-bottom:14px}.hero h1 span{color:#d90429}
+.tamil-title{font-size:36px;color:#ffbe0b;margin-bottom:16px;font-weight:800}
+.hero p{font-size:18px;color:#ccc;margin-bottom:28px;line-height:1.6}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:14px 28px;border-radius:8px;font-weight:700;text-decoration:none;display:inline-block;font-size:16px}
+.btn-red{background:#d90429;color:#fff}.btn-outline{border:2px solid #fff;color:#fff}
+.section{padding:80px 5%}.section-dark{background:#111}
+.section-title{text-align:center;margin-bottom:50px}.section-title h2{font-size:40px;font-weight:800}.section-title h2 span{color:#d90429}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.card{background:#1a1a1a;padding:30px;border-radius:14px;border-left:4px solid #d90429}
+.card h3{font-size:22px;margin-bottom:10px;color:#ffbe0b}.card p{color:#bbb;line-height:1.6}
+.join-box{background:linear-gradient(135deg,#d90429 0%,#8b0000 100%);border-radius:20px;padding:50px;text-align:center}
+.form{max-width:500px;margin:30px auto 0;display:flex;flex-direction:column;gap:14px}
+.form input,.form textarea{padding:14px 18px;border-radius:8px;border:none;font-size:16px;outline:none}
+.form button{background:#000;color:#fff;padding:14px;border:none;border-radius:8px;font-weight:700;font-size:17px}
+footer{background:#000;padding:40px 5%;text-align:center;border-top:1px solid #222;color:#666}
+@media(max-width:768px){.hero h1{font-size:32px}.tamil-title{font-size:26px}}
+</style>
+</head>
+<body>
+<nav><div class="logo">TAMILAR <span>PURATCHI</span></div></nav>
+<section class="hero">
+<div>
+<div class="badge">OFFICIAL WEBSITE • 2026</div>
+<h1>TAMILAR <span>PURATCHI</span> IYAKKAM</h1>
+<div class="tamil-title">தமிழர் புரட்சி இயக்கம்</div>
+<p>தமிழர் உரிமைக்காகவும், தமிழர் வாழ்வாதாரத்திற்காகவும் போராடும் புரட்சிகர இயக்கம். நாம் தமிழர்!</p>
+<div class="btns">
+<a href="#join" class="btn btn-red">இயக்கத்தில் இணைய</a>
+<a href="#about" class="btn btn-outline">கொள்கைகளை அறிய</a>
+</div>
+</div>
+</section>
+<section class="section" id="about">
+<div class="section-title"><h2>எங்கள் <span>கொள்கைகள்</span></h2></div>
+<div class="grid3">
+<div class="card"><h3>1. தமிழர் உரிமை</h3><p>தமிழகத்தில் தமிழர்களுக்கே முன்னுரிமை. வேலைவாய்ப்பு, கல்வியில் தமிழர் நலன்.</p></div>
+<div class="card"><h3>2. விவசாய புரட்சி</h3><p>விவசாயிகள் பாதுகாப்பு, காவிரி நீர் உரிமை மீட்பு.</p></div>
+<div class="card"><h3>3. தமிழ் மொழி</h3><p>அனைத்து துறைகளிலும் தமிழ் ஆட்சி மொழி.</p></div>
+<div class="card"><h3>4. இளைஞர் எழுச்சி</h3><p>லட்சக்கணக்கான இளைஞர்களுக்கு வேலைவாய்ப்பு.</p></div>
+<div class="card"><h3>5. ஊழல் ஒழிப்பு</h3><p>100% வெளிப்படையான நிர்வாகம்.</p></div>
+<div class="card"><h3>6. பண்பாட்டு மீட்பு</h3><p>தமிழர் பாரம்பரியம் பாதுகாப்பு.</p></div>
+</div>
+</section>
+<section class="section section-dark" id="join">
+<div class="join-box">
+<h2>புரட்சியில் இணையுங்கள்!</h2>
+<div class="form">
+<input type="text" id="name" placeholder="உங்கள் பெயர்">
+<input type="tel" id="phone" placeholder="தொலைபேசி எண்">
+<input type="text" id="district" placeholder="மாவட்டம்">
+<textarea id="msg" placeholder="ஏன் இணைய விரும்புகிறீர்கள்?"></textarea>
+<button onclick="alert('🔥 வாழ்த்துக்கள் Anna! பதிவு செய்யப்பட்டது!')">இப்போதே இணைய →</button>
+</div>
+</div>
+</section>
+<footer>© 2026 TAMILAR PURATCHI IYAKKAM | தமிழர் புரட்சி இயக்கம்<br>Contact: +91 90000 00000</footer>
+</body>
+</html>
