@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin - TPI</title>
+<style>
+*{box-sizing:border-box}body{font-family:Arial;margin:0;background:#111;color:#fff}
+.login{max-width:380px;margin:80px auto;background:#fff;color:#000;padding:20px;border-radius:12px;border:3px solid #ff0;text-align:center}
+input{width:100%;padding:12px;margin-top:8px;border:2px solid #000;border-radius:8px}
+.btn{background:#000;color:#ff0;padding:12px;width:100%;border:none;border-radius:8px;font-weight:bold;margin-top:10px;cursor:pointer}
+.panel{display:none;padding:12px}
+.head{background:#000;padding:10px;display:flex;justify-content:space-between;border-bottom:3px solid #ff0;position:sticky;top:0}
+table{width:100%;border-collapse:collapse;background:#fff;color:#000;font-size:12px;margin-top:10px}
+th,td{border:1px solid #000;padding:6px;text-align:left}th{background:#ff0}
+.mini{width:40px;height:50px;object-fit:cover;border:1px solid #000}
+.search{max-width:300px;padding:10px;border-radius:20px;border:2px solid #ff0}
+</style></head><body>
+<div id="loginBox" class="login">
+<img src="flag.jpg" width="80" style="border:2px solid #000"><h3>தமிழர் புரட்சி இயக்கம்<br>ADMIN LOGIN</h3>
+<input type="password" id="pass" placeholder="Password enter pannunga">
+<button class="btn" onclick="login()">LOGIN</button>
+<small>Default: TPI2026</small>
+</div>
+
+<div id="panel" class="panel">
+<div class="head">
+<div>🐯 TPI ADMIN - <span id="count">0</span> Members</div>
+<div><input id="search" class="search" placeholder="Search name/phone..." onkeyup="render()">
+<button onclick="location.reload()" style="padding:6px 10px;border-radius:6px">Logout</button></div>
+</div>
+
+<div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap">
+<button class="btn" style="width:auto;background:green" onclick="exportExcel()">📥 Excel Download</button>
+<button class="btn" style="width:auto;background:red" onclick="clearAll()">🗑️ Clear All</button>
+<a href="member-join.html" style="background:#ff0;color:#000;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold">+ New Member</a>
+</div>
+
+<div style="overflow:auto">
+<table><thead><tr><th>Photo</th><th>ID</th><th>Name</th><th>Phone</th><th>District</th><th>Village</th><th>DOB</th><th>Address</th><th>Date</th><th>Action</th></tr></thead><tbody id="tbody"></tbody></table>
+</div>
+</div>
+
+<script>
+const ADMIN_PASS="TPI2026";
+function login(){if(pass.value===ADMIN_PASS){loginBox.style.display='none';panel.style.display='block';render();}else alert('Password thappu Anna! TPI2026');}
+
+function getData(){return JSON.parse(localStorage.getItem('tpi_members')||'[]');}
+function render(){
+let data=getData();
+let q=search.value.toLowerCase();
+let f=data.filter(m=>!q||m.name.toLowerCase().includes(q)||m.phone.includes(q)||m.dist.toLowerCase().includes(q));
+count.innerText=f.length;
+tbody.innerHTML=f.map((m,i)=>`<tr>
+<td><img src="${m.photo}" class="mini"></td>
+<td>${m.id}</td><td>${m.name}</td><td>${m.phone}</td><td>${m.dist}</td><td>${m.village}</td><td>${m.dob}</td><td>${m.address.slice(0,30)}</td><td>${m.date}</td>
+<td><button onclick="del(${i})" style="background:red;color:#fff;border:none;padding:4px 8px;border-radius:4px">X</button></td></tr>`).join('')||'<tr><td colspan=10 style="text-align:center;padding:20px">No members yet. member-join.html la add pannunga!</td></tr>';
+}
+function del(i){if(confirm('Delete pannava?')){let d=getData();d.splice(i,1);localStorage.setItem('tpi_members',JSON.stringify(d));render();}}
+function clearAll(){if(confirm('Ella members-um delete aagidum! Sure-ah?')){localStorage.removeItem('tpi_members');render();}}
+function exportExcel(){
+let d=getData();if(!d.length){alert('No data!');return;}
+let csv="ID,Name,Phone,Father,DOB,Voter,District,Taluk,Village,Ward,Address,Date\n"+d.map(m=>`"${m.id}","${m.name}","${m.phone}","${m.father}","${m.dob}","${m.voter}","${m.dist}","${m.taluk}","${m.village}","${m.ward}","${m.address}","${m.date}"`).join('\n');
+let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='TPI_Members_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+}
+</script>
+</body>
+  </html>
