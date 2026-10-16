@@ -19,7 +19,7 @@ body{background:#0a0a0a;color:#fff}
 .leader-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .leader{border:2px solid gold;border-radius:8px;padding:12px;text-align:center;background:#222}
 .form-label{color:gold;font-size:13px;font-weight:bold;margin-top:12px;display:block}
-input,select,textarea{width:100%;padding:12px;margin:5px 0 10px 0;border-radius:8px;border:2px solid #444;background:#222;color:#fff}
+input,textarea{width:100%;padding:12px;margin:5px 0 10px 0;border-radius:8px;border:2px solid #444;background:#222;color:#fff}
 .photo-preview{width:110px;height:110px;border-radius:10px;border:2px solid gold;object-fit:cover;margin:10px auto;display:none;background:#333}
 .nav{position:fixed;bottom:0;width:100%;background:#000;border-top:3px solid red;padding:8px;display:flex;justify-content:space-around;align-items:center;height:60px;z-index:1000}
 .nav button{background:red;color:white;border:none;padding:10px 20px;border-radius:20px;width:auto}
@@ -36,20 +36,14 @@ input,select,textarea{width:100%;padding:12px;margin:5px 0 10px 0;border-radius:
 <div class="header"><h1>🐯 TAMILAR PURATCHI IYAKKAM</h1><span id="pg">1/14</span></div>
 
 <div class="page active" id="p1"><div class="card" style="text-align:center"><div class="logo-box" style="width:240px;height:240px"><img src="tpi_logo.jpg"></div><h1 style="color:red">தமிழர் புரட்சி இயக்கம்</h1><button class="btn" onclick="next()">இயக்கம் காண ▶</button></div></div>
-
-<div class="page" id="p2"><h2 style="text-align:center;color:gold">2. இயக்கக் கொடி</h2><img src="tpi_flag.jpg" class="flag-img"><div class="card" style="text-align:center">🚩 ORIGINAL PULI KODI</div></div>
-
+<div class="page" id="p2"><h2 style="text-align:center;color:gold">2. கொடி</h2><img src="tpi_flag.jpg" class="flag-img"></div>
 <div class="page" id="p3"><h2 style="text-align:center;color:gold">3. லோகோ</h2><div class="logo-box"><img src="tpi_logo.jpg"></div></div>
+<div class="page" id="p4"><div class="card">🔥 தமிழர் ஒற்றுமை</div></div>
+<div class="page" id="p5"><div class="card">1️⃣ தமிழ் தான் உயிர்</div></div>
+<div class="page" id="p6"><h2 style="text-align:center;color:gold">6. தலைவர்கள்</h2><div class="leader-grid"><div class="leader">👑 திருவள்ளுவர்</div><div class="leader">🦁 பெரியார்</div></div></div>
+<div class="page" id="p7"><h2 style="text-align:center;color:gold">7. Admin</h2><div class="card"><input id="adminUser" placeholder="admin"><input type="password" id="adminPass" placeholder="tpi2026"><button class="btn" onclick="adminLogin()">Login</button><p id="adminMsg" style="color:gold"></p><div id="adminData" style="display:none"><p>Total: <span id="totalM">0</span></p><div id="memberList" style="background:#000;padding:10px;border-radius:8px;font-size:11px"></div></div></div></div>
 
-<div class="page" id="p4"><div class="card">🔥 தமிழர் ஒற்றுமை<br>🔥 தமிழ் பாதுகாப்பு</div></div>
-
-<div class="page" id="p5"><div class="card">1️⃣ தமிழ் தான் உயிர்<br>2️⃣ ஒற்றுமை</div></div>
-
-<div class="page" id="p6"><h2 style="text-align:center;color:gold">6. தலைவர்கள்</h2><div class="leader-grid"><div class="leader">👑 திருவள்ளுவர்</div><div class="leader">🦁 பெரியார்</div><div class="leader">📚 அண்ணா</div><div class="leader">🐯 பிரபாகரன்</div></div></div>
-
-<div class="page" id="p7"><h2 style="text-align:center;color:gold">7. Admin</h2><div class="card"><input id="adminUser" placeholder="Username"><input type="password" id="adminPass" placeholder="Password"><button class="btn" onclick="adminLogin()">Login</button><p id="adminMsg" style="color:gold"></p><div id="adminData" style="display:none"><p>Total: <span id="totalM">0</span></p><div id="memberList" style="background:#000;padding:10px;border-radius:8px;font-size:11px"></div></div></div></div>
-
-<!-- PAGE 8 - CORRECTED FULL FORM -->
+<!-- PAGE 8 - DISTRICT MANUAL TYPING + VOTER ID -->
 <div class="page" id="p8">
 <h2 style="text-align:center;color:gold">8. உறுப்பினர் படிவம்</h2>
 <div class="card" style="text-align:left">
@@ -67,6 +61,9 @@ input,select,textarea{width:100%;padding:12px;margin:5px 0 10px 0;border-radius:
 <label class="form-label">📧 EMAIL</label>
 <input id="mEmail" type="email" placeholder="Email">
 
+<label class="form-label">🆔 VOTER ID *</label>
+<input id="mVoter" placeholder="Voter ID - ABC1234567">
+
 <label class="form-label">🏠 ADDRESS *</label>
 <textarea id="mAddress" rows="2" placeholder="Address"></textarea>
 
@@ -79,17 +76,8 @@ input,select,textarea{width:100%;padding:12px;margin:5px 0 10px 0;border-radius:
 <label class="form-label">🏛️ தொகுதி *</label>
 <input id="mThoguthi" placeholder="தொகுதி">
 
-<label class="form-label">🗺️ மாவட்டம் *</label>
-<select id="mDist">
-<option value="">மாவட்டம் தேர்ந்தெடுக்க</option>
-<option>சென்னை</option><option>காஞ்சிபுரம்</option><option>திருவள்ளூர்</option><option>வேலூர்</option><option>திருவண்ணாமலை</option><option>கடலூர்</option><option>தஞ்சாவூர்</option><option>மதுரை</option><option>கோவை</option><option>சேலம்</option><option>திருநெல்வேலி</option><option>மற்றவை</option>
-</select>
-
-<label class="form-label">🌐 மண்டலம்</label>
-<select id="mMandal">
-<option value="">மண்டலம்</option>
-<option>வடக்கு</option><option>தெற்கு</option><option>கிழக்கு</option><option>மேற்கு</option><option>மத்திய</option>
-</select>
+<label class="form-label">🗺️ மாவட்டம் * MANUAL TYPING</label>
+<input id="mDistManual" placeholder="மாவட்டம் Type pannunga - உதா: திருவள்ளூர்">
 
 <button class="btn" style="background:linear-gradient(90deg,red,gold);margin-top:15px" onclick="saveMember()">✅ பதிவு செய்க</button>
 <p id="formMsg" style="color:gold;text-align:center;margin-top:10px;font-weight:bold"></p>
@@ -98,22 +86,21 @@ input,select,textarea{width:100%;padding:12px;margin:5px 0 10px 0;border-radius:
 
 <!-- PAGE 9 ID CARD -->
 <div class="page" id="p9">
-<h2 style="text-align:center;color:gold">9. ID CARD FRONT & BACK</h2>
+<h2 style="text-align:center;color:gold">9. ID CARD</h2>
 <div class="id-container">
 
 <div>
-<p style="text-align:center;color:gold;margin-bottom:8px">🔷 FRONT SIDE</p>
+<p style="text-align:center;color:gold;margin-bottom:8px">🔷 FRONT</p>
 <div class="id-card-front">
 <div class="front-logo"><img src="tpi_logo.jpg"></div>
 <h2 style="color:gold;font-size:16px">தமிழர் புரட்சி இயக்கம்</h2>
-<h3 style="font-size:12px;margin-top:5px">TAMILAR PURATCHI IYAKKAM</h3>
 <div style="background:gold;color:#000;padding:5px 15px;border-radius:20px;margin-top:10px;font-weight:bold;font-size:12px">MEMBER CARD</div>
 <p style="font-size:10px;margin-top:8px">ID: TPI-<span id="fId">0000</span></p>
 </div>
 </div>
 
 <div>
-<p style="text-align:center;color:gold;margin-bottom:8px">🔶 BACK SIDE</p>
+<p style="text-align:center;color:gold;margin-bottom:8px">🔶 BACK</p>
 <div class="id-card-back">
 <div style="background:red;color:white;padding:5px;border-radius:6px;text-align:center;font-weight:bold;font-size:11px">MEMBER DETAILS</div>
 <div style="display:flex;gap:8px;margin-top:8px">
@@ -121,15 +108,15 @@ input,select,textarea{width:100%;padding:12px;margin:5px 0 10px 0;border-radius:
 <div style="font-size:10px;line-height:1.5">
 <p><b>NAME:</b> <span id="cName">-</span></p>
 <p><b>MOBILE:</b> <span id="cPhone">-</span></p>
-<p><b>EMAIL:</b> <span id="cEmail">-</span></p>
+<p><b>VOTER ID:</b> <span id="cVoter">-</span></p>
 <p><b>ID:</b> TPI-<span id="cId">0000</span></p>
 </div>
 </div>
 <div style="font-size:10px;line-height:1.5;margin-top:6px;background:rgba(255,255,255,0.8);padding:6px;border-radius:6px">
+<p><b>EMAIL:</b> <span id="cEmail">-</span></p>
 <p><b>ADDRESS:</b> <span id="cAddress">-</span></p>
 <p><b>WARD:</b> <span id="cWard">-</span> | <b>கிராமம்:</b> <span id="cVillage">-</span></p>
-<p><b>தொகுதி:</b> <span id="cThoguthi">-</span></p>
-<p><b>மாவட்டம்:</b> <span id="cDist2">-</span> | <b>மண்டலம்:</b> <span id="cMandal">-</span></p>
+<p><b>தொகுதி:</b> <span id="cThoguthi">-</span> | <b>மாவட்டம்:</b> <span id="cDistManual">-</span></p>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:end;margin-top:6px;border-top:1px dashed #000;padding-top:5px">
 <div style="text-align:center"><div style="border-top:1px solid #000;width:70px;margin-top:12px"></div><p style="font-size:7px">Member</p></div>
@@ -142,7 +129,7 @@ input,select,textarea{width:100%;padding:12px;margin:5px 0 10px 0;border-radius:
 <button class="btn" onclick="window.print()" style="margin-top:15px;background:#222;border:2px solid gold">🖨️ Print</button>
 </div>
 
-<div class="page" id="p10"><h2 style="text-align:center;color:gold">10. Social</h2><div class="card" style="text-align:center">Links</div></div>
+<div class="page" id="p10"><h2 style="text-align:center;color:gold">10. Social</h2><div class="card">Links</div></div>
 <div class="page" id="p11"><div class="card">🗓️ நிகழ்ச்சிகள்</div></div>
 <div class="page" id="p12"><h2 style="text-align:center;color:gold">12. Banner</h2><div class="card"><input type="file" accept="image/*" onchange="uploadImg(this,'banner')"><div id="bannerGallery" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"></div></div></div>
 <div class="page" id="p13"><h2 style="text-align:center;color:gold">13. Poster</h2><div class="card"><input type="file" accept="image/*" onchange="uploadImg(this,'poster')"><div id="posterGallery" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"></div></div></div>
@@ -162,16 +149,16 @@ function saveMember(){
 let name=document.getElementById('mName').value.trim();
 let phone=document.getElementById('mPhone').value.trim();
 let email=document.getElementById('mEmail').value.trim();
+let voter=document.getElementById('mVoter').value.trim();
 let address=document.getElementById('mAddress').value.trim();
 let ward=document.getElementById('mWard').value.trim();
 let village=document.getElementById('mVillage').value.trim();
 let thoguthi=document.getElementById('mThoguthi').value.trim();
-let dist=document.getElementById('mDist').value;
-let mandal=document.getElementById('mMandal').value;
-if(!name||!phone||!address||!village||!thoguthi||!dist){document.getElementById('formMsg').innerText='⚠️ * உள்ளதை பூர்த்தி செய்யுங்க!';return;}
+let dist=document.getElementById('mDistManual').value.trim();
+if(!name||!phone||!voter||!address||!village||!thoguthi||!dist){document.getElementById('formMsg').innerText='⚠️ * உள்ளதை பூர்த்தி செய்யுங்க!';return;}
 if(!tempPhoto){document.getElementById('formMsg').innerText='⚠️ Photo Upload!';return;}
 let id=Math.floor(1000+Math.random()*9000);
-let m={name,phone,email,address,ward,village,thoguthi,dist,mandal,photo:tempPhoto,id};
+let m={name,phone,email,voter,address,ward,village,thoguthi,dist,photo:tempPhoto,id};
 members.push(m);localStorage.setItem('tpi_members_full',JSON.stringify(members));localStorage.setItem('last_member_full',JSON.stringify(m));
 document.getElementById('formMsg').innerText='✅ Success!';updateCard(m);setTimeout(()=>{cur=9;show(9)},800);
 }
@@ -182,16 +169,16 @@ document.getElementById('cPhoto').src=m.photo||'tpi_logo.jpg';
 document.getElementById('cName').innerText=m.name;
 document.getElementById('cPhone').innerText=m.phone;
 document.getElementById('cEmail').innerText=m.email||'-';
+document.getElementById('cVoter').innerText=m.voter;
 document.getElementById('cAddress').innerText=m.address;
 document.getElementById('cWard').innerText=m.ward||'-';
 document.getElementById('cVillage').innerText=m.village;
 document.getElementById('cThoguthi').innerText=m.thoguthi;
+document.getElementById('cDistManual').innerText=m.dist;
 document.getElementById('cId').innerText=m.id;
 document.getElementById('fId').innerText=m.id;
-document.getElementById('cDist2').innerText=m.dist;
-document.getElementById('cMandal').innerText=m.mandal||'-';
 }
-function adminLogin(){let u=document.getElementById('adminUser').value;let p=document.getElementById('adminPass').value;if(u==='admin'&&p==='tpi2026'){document.getElementById('adminMsg').innerText='✅ Success';document.getElementById('adminData').style.display='block';document.getElementById('totalM').innerText=members.length;document.getElementById('memberList').innerHTML=members.map((mm,i)=>`<div style="border-bottom:1px solid #333;padding:4px 0"><b>${i+1}. ${mm.name}</b><br>${mm.phone} | ${mm.village}</div>`).join('');}else{document.getElementById('adminMsg').innerText='User:admin Pass:tpi2026';}}
+function adminLogin(){let u=document.getElementById('adminUser').value;let p=document.getElementById('adminPass').value;if(u==='admin'&&p==='tpi2026'){document.getElementById('adminMsg').innerText='✅ Success';document.getElementById('adminData').style.display='block';document.getElementById('totalM').innerText=members.length;document.getElementById('memberList').innerHTML=members.map((mm,i)=>`<div style="border-bottom:1px solid #333;padding:4px 0"><b>${i+1}. ${mm.name}</b><br>${mm.phone} | Voter:${mm.voter} | ${mm.dist}</div>`).join('');}else{document.getElementById('adminMsg').innerText='User:admin Pass:tpi2026';}}
 function uploadImg(input,type){let file=input.files[0];if(!file) return;let r=new FileReader();r.onload=function(e){let imgs=JSON.parse(localStorage.getItem(type+'_imgs')||'[]');imgs.push(e.target.result);localStorage.setItem(type+'_imgs',JSON.stringify(imgs));renderGallery(type);};r.readAsDataURL(file);}
 function uploadImgs(input,type){for(let f of input.files){let r=new FileReader();r.onload=function(e){let imgs=JSON.parse(localStorage.getItem(type+'_imgs')||'[]');imgs.push(e.target.result);localStorage.setItem(type+'_imgs',JSON.stringify(imgs));renderGallery(type);};r.readAsDataURL(f);}}
 function renderGallery(type){let imgs=JSON.parse(localStorage.getItem(type+'_imgs')||'[]');let div=document.getElementById(type+'Gallery');if(!div) return;div.innerHTML=imgs.map((s,i)=>`<div style="position:relative"><img src="${s}" style="width:100%;height:100px;object-fit:cover;border-radius:8px"><button onclick="delImg('${type}',${i})" style="position:absolute;top:5px;right:5px;background:red;color:white;border:none;border-radius:50%;width:20px;height:20px">X</button></div>`).join('');}
@@ -199,4 +186,4 @@ function delImg(t,i){let imgs=JSON.parse(localStorage.getItem(t+'_imgs')||'[]');
 updateCard();renderGallery('banner');renderGallery('poster');renderGallery('more');
 </script>
 </body>
- </html>
+                                                                           </html>
